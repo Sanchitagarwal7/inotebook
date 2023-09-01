@@ -10,17 +10,23 @@ import NoteState from "./context/notes/NoteState.js";
 
 function App() {
   return (
-  <>
-    <NoteState>
-      <BrowserRouter>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />}> </Route>
-          <Route path="/about" element={<About/>}> </Route>
-        </Routes>
-      </BrowserRouter>
-    </NoteState>
-  </>
+    <>
+      <NoteState>
+        <BrowserRouter>
+          <Navbar />
+          <div className="container my-3">
+            <Routes>
+              <Route path="/" element={<Home />}>
+                {" "}
+              </Route>
+              <Route path="/about" element={<About />}>
+                {" "}
+              </Route>
+            </Routes>
+          </div>
+        </BrowserRouter>
+      </NoteState>
+    </>
   );
 }
 

@@ -3,10 +3,16 @@ import NoteContext from "../context/notes/NoteContext";
 
 const NoteItem = (props) => {
   const context = useContext(NoteContext);
-  const { deleteNote } = context;
+  const { deleteNote, editNote } = context;
+  const { note, updateNote} = props;
 
-  const handleClick = () => {
+  const handleDel = () => {
     deleteNote(props.id);
+  };
+
+  const handleEdit = ()=>
+  {
+    updateNote(note);
   };
 
   return (
@@ -24,8 +30,8 @@ const NoteItem = (props) => {
             <p>{props.body}</p>
           </blockquote>
           <div className="d-flex justify-content-between ">
-            <i className="fa-solid fa-trash btn" onClick={handleClick}></i>
-            <i className="fa-solid fa-pen-to-square btn"></i>
+            <i className="fa-solid fa-trash btn" onClick={handleDel}></i>
+            <i className="fa-solid fa-pen-to-square btn" onClick={handleEdit}></i>
           </div>
         </div>
       </div>

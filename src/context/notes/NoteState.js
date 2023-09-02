@@ -20,7 +20,7 @@ const NoteState = (props) => {
       },
     });
     const json = await response.json();
-    console.log(json);
+    // console.log(json);
     setNotes(json);
   }
 
@@ -41,23 +41,33 @@ const NoteState = (props) => {
     });
 
 
-    console.log("adding a new note");
+    // console.log("adding a new note");
     //TODO API CALL
     const note = {
-      _id: "64bb9b82ccd64579fbeac4e2",
-      user: "64bb94e5079a81113ca3f370",
       title: title,
       body: body,
-      tag: tag,
-      date: "2023-07-22T09:04:02.132Z",
-      __v: 0,
+      tag: tag
     };
     setNotes(notes.concat(note));
   };
 
   //Delete a note
-  const deleteNote = (id) => {
-    console.log("deleting note with id", id);
+  const deleteNote = async (id) => {
+
+    const response = await fetch(`${host}/api/notes/deletenote/${id}`, {
+      method: "DELETE", // *GET, POST, PUT, DELETE, etc.
+      headers: {
+        "Content-Type": "application/json",
+        "token":
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjRmMzE3Yzg4ZGM0YmIyYTM1ZDQ1ZDVkIn0sImlhdCI6MTY5MzY1Mjk3N30.B0aDzd9GN4NfoK2A4ughoMuVGlw7x2DWA0c0mx7grms",
+        // 'Content-Type': 'application/x-www-form-urlencoded',
+      }
+    });
+
+    // const json = response.json();
+    // console.log(json);
+
+    // console.log("deleting note with id", id);
 
     const newNotes = notes.filter((note) => {
       return note._id !== id;

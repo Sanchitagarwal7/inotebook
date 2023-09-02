@@ -39,11 +39,11 @@ router.post('/register', [
         id: user.id
       }
     }
-    const authtoken = jwt.sign(data, my_secret);
+    const token = jwt.sign(data, my_secret);
 
 
     // res.json(user)
-    res.json({ authtoken })
+    res.json({ token })
 
   } catch (error) {
     console.error(error.message);
@@ -81,8 +81,8 @@ router.post('/login', [
         id: user.id
       }
     }
-    const authtoken = jwt.sign(data, my_secret);
-    res.json({ authtoken })
+    const token = jwt.sign(data, my_secret);
+    res.json({ token })
 
   } catch (error) {
     console.error(error.message);

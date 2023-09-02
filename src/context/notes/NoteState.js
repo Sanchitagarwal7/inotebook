@@ -4,37 +4,29 @@ import NoteContext from "./NoteContext";
 const NoteState = (props) => {
   const host = "http://localhost:4999";
 
-  const notesInitial = [
-    {
-      _id: "64bb9b82ccd64579fbeac4e7",
-      user: "64bb94e5079a81113ca3f370",
-      title: "Mini Goal Updated",
-      body: "To complete harry react course and make projects",
-      tag: "Super Important",
-      date: "2023-07-22T09:04:02.132Z",
-      __v: 0,
-    },
-    {
-      _id: "64bb9b82ccd64579fbeac4e8",
-      user: "64bb94e5079a81113ca3f370",
-      title: "Mini Goal Updated",
-      body: "To complete harry react course and make projects",
-      tag: "Super Important",
-      date: "2023-07-22T09:04:02.132Z",
-      __v: 0,
-    },
-    {
-      _id: "64bb9b82ccd64579fbeac4e9",
-      user: "64bb94e5079a81113ca3f370",
-      title: "Mini Goal Updated",
-      body: "To complete harry react course and make projects",
-      tag: "Super Important",
-      date: "2023-07-22T09:04:02.132Z",
-      __v: 0,
-    },
-  ];
+  const notesInitial = [];
 
   const [notes, setNotes] = useState(notesInitial);
+
+  //Get all Notes
+  const getNotes = async () => {
+    //API CALL
+    let url = `${host}/api/notes/fetchnotes`;
+
+    // Default options are marked with *
+    const response = await fetch(url, {
+      method: "GET", // *GET, POST, PUT, DELETE, etc.
+      headers: {
+        "Content-Type": "application/json",
+        "authToken":
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjRiYjk0ZTUwNzlhODExMTNjYTNmMzcwIn0sImlhdCI6MTY5MDAxNTE1OH0.froe15vD3V984nJ6rQzmdutkXg-Ndpa92E3wKPsOepU",
+        // 'Content-Type': 'application/x-www-form-urlencoded',
+      },
+    });
+    const json = await response.json();
+    console.log(json);
+    setNotes(json);
+  }
 
   //Add a note
   const addNote = async (title, body, tag) => {
@@ -46,7 +38,7 @@ const NoteState = (props) => {
       method: "POST", // *GET, POST, PUT, DELETE, etc.
       headers: {
         "Content-Type": "application/json",
-        "auth-token":
+        "authToken":
           "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjRiYjk0ZTUwNzlhODExMTNjYTNmMzcwIn0sImlhdCI6MTY5MDAxNTE1OH0.froe15vD3V984nJ6rQzmdutkXg-Ndpa92E3wKPsOepU",
         // 'Content-Type': 'application/x-www-form-urlencoded',
       },
@@ -89,7 +81,7 @@ const NoteState = (props) => {
       method: "POST", // *GET, POST, PUT, DELETE, etc.
       headers: {
         "Content-Type": "application/json",
-        "auth-token":
+        "authToken":
           "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjRiYjk0ZTUwNzlhODExMTNjYTNmMzcwIn0sImlhdCI6MTY5MDAxNTE1OH0.froe15vD3V984nJ6rQzmdutkXg-Ndpa92E3wKPsOepU",
         // 'Content-Type': 'application/x-www-form-urlencoded',
       },
@@ -112,7 +104,7 @@ const NoteState = (props) => {
 
   return (
     <NoteContext.Provider
-      value={{ notes, setNotes, addNote, deleteNote, editNote }}
+      value={{ notes, setNotes, addNote, deleteNote, editNote, getNotes }}
     >
       {props.children}
     </NoteContext.Provider>

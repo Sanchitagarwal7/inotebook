@@ -18,10 +18,10 @@ const NoteItem = (props) => {
   return (
     <>
       <div
-        className="card col-md-3 my-3 mx-1"
+        className="card col-md-3 my-3"
         style={{ display: "inline-block" }}
       >
-        <h4 className="card-header">{props.title}</h4>
+        <h6 className="card-header">{props.title}</h6>
         <div className="card-body">
           <blockquote className="blockquote mb-0">
             <footer className="blockquote-footer">

@@ -82,7 +82,7 @@ const NoteState = (props) => {
 
     // Default options are marked with *
     const response = await fetch(`${host}/api/notes/updatenote/${id}`, {
-      method: "POST", // *GET, POST, PUT, DELETE, etc.
+      method: "PATCH", // *GET, POST, PUT, DELETE, etc.
       headers: {
         "Content-Type": "application/json",
         "token":
@@ -102,8 +102,11 @@ const NoteState = (props) => {
         element.title = title;
         element.body = body;
         element.tag = tag;
+        break;
       }
     }
+    setNotes(notes);
+    getNotes();
   };
 
   return (

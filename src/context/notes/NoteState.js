@@ -40,14 +40,8 @@ const NoteState = (props) => {
       body: JSON.stringify({ title, body, tag }), // body data type must match "Content-Type" header
     });
 
-
-    // console.log("adding a new note");
-    //TODO API CALL
-    const note = {
-      title: title,
-      body: body,
-      tag: tag
-    };
+    const note = await response.json();
+    
     setNotes(notes.concat(note));
   };
 

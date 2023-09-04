@@ -73,6 +73,7 @@ const onChange = (event)=>{
                     name="etitle"
                     value={note.etitle}
                     onChange={onChange}
+                    minLength={5} required                    
                   />
                 </div>
                 <div className="form-group">
@@ -84,6 +85,7 @@ const onChange = (event)=>{
                     name="ebody"
                     value={note.ebody}
                     onChange={onChange}
+                    minLength={5} required
                   />
                 </div>
                 <div className="form-group my-3">
@@ -108,16 +110,15 @@ const onChange = (event)=>{
               >
                 Close
               </button>
-              <button type="button" className="btn btn-primary" onClick={handleClick}>
+              <button disabled={note.etitle.length<5 || note.ebody.length<5} type="button" className="btn btn-primary" onClick={handleClick}>
                 Update Note
               </button>
             </div>
           </div>
         </div>
       </div>
-
-
-      {Array.from(notes).map((note) => {
+      <h3>Your Notes:</h3>
+      {notes.length!==0?Array.from(notes).map((note) => {
         return (
           <NoteItem
             note={note}
@@ -129,7 +130,7 @@ const onChange = (event)=>{
             updateNote={updateNote}
           />
         );
-      })}
+      }): <h3 style={{textAlign: "center"}}>No Notes to Display</h3>}
     </>
   );
 };

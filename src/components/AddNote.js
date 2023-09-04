@@ -10,6 +10,7 @@ const AddNote = () => {
     const handleClick = (event)=>{
         event.preventDefault();
         addNote(note.title, note.body, note.tag);
+        setState({title: "", body: "", tag: ""});
     }
 
     const onChange = (event)=>{
@@ -29,6 +30,8 @@ const AddNote = () => {
               placeholder="Enter title of your note"
               name="title"
               onChange={onChange}
+              minLength={5} required
+              value={note.title}
             />
           </div>
           <div className="form-group">
@@ -40,6 +43,8 @@ const AddNote = () => {
               placeholder="Enter your note"
               name="body"
               onChange={onChange}
+              minLength={5} required
+              value={note.body}
             />
           </div>
           <div className="form-group my-3">
@@ -51,9 +56,10 @@ const AddNote = () => {
               placeholder="Input tag (optional)"
               name="tag"
               onChange={onChange}
+              value={note.tag}
             />
           </div>
-          <button type="submit" className="btn btn-primary my-3" onClick={handleClick}>
+          <button disabled={note.title.length<5 || note.body.length<5} type="submit" className="btn btn-primary my-3" onClick={handleClick}>
             Add
           </button>
         </form>

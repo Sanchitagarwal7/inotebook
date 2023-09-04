@@ -1,10 +1,10 @@
 import React from "react";
 
-const Alert = () => {
+const Alert = (props) => {
   return (
     <div>
       <div className="alert alert-info" role="alert">
-        This is a light alert—check it out!
+        {props.instance}
       </div>
     </div>
   );

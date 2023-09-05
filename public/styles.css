@@ -1,3 +1,17 @@
+body{
+    background-color: #e5e5f7;
+    opacity: 0.8;
+    background-image: radial-gradient(#444cf7 0.5px, #e5e5f7 0.5px);
+    background-size: 10px 10px;
+}
+
+.card {
+    background-color: #fff;
+    opacity: 0.8;
+    background-size: 20px 20px;
+    background-image:  repeating-linear-gradient(0deg, #444cf7, #444cf7 1px, #fff 1px, #fff);
+  }
+
 .noteStyle{
     background-color: rgb(254,221,221);
     border-left: 5px solid rgb(244,67,54);
@@ -7,12 +21,3 @@
 i{
     cursor: pointer;
 }
-
-.horizontal_line {
-    background-color: yellow;
-    width: 90%;
-    height: 5px;
-    border-top: 5px dotted black;
-    line-height: 80%;
-}
-

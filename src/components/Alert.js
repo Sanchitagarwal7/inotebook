@@ -1,13 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
+import AlertContext from "../context/alert/AlertContext"
 
-const Alert = (props) => {
+function Alert() {
+
+  const alertContext = useContext(AlertContext);
+  const {alert} = alertContext;
+
   return (
-    <div>
-      <div className="alert alert-info" role="alert">
-        {props.instance}
+    alert && (
+      <div className={`alert alert-${alert.color}`} role="alert">
+        <strong>{alert.msg}</strong>
       </div>
-    </div>
+    )
   );
-};
+}
 
 export default Alert;

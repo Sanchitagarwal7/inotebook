@@ -1,10 +1,14 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import NoteContext from "./NoteContext";
+import AlertContext from "../alert/AlertContext";
 
 const NoteState = (props) => {
   const host = "http://localhost:4999"
   const notesInitial = []
   const [notes, setNotes] = useState(notesInitial)
+
+  const alertContext = useContext(AlertContext);
+  const {showText} = alertContext;
 
   //Get all Notes
   const getNotes = async () => {
@@ -43,6 +47,7 @@ const NoteState = (props) => {
     const note = await response.json();
     
     setNotes(notes.concat(note));
+    showText("New Note Added", "success");
   };
 
   //Delete a note
@@ -68,6 +73,7 @@ const NoteState = (props) => {
     });
 
     setNotes(newNotes);
+    showText("Note Deleted", "danger");
   };
 
   //Edit a note
@@ -101,6 +107,7 @@ const NoteState = (props) => {
     }
     setNotes(notes);
     getNotes();
+    showText("Note Updated", "info");
   };
 
   return (

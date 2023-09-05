@@ -23,6 +23,8 @@ const Login = () => {
       localStorage.setItem("token", json.token);
       navigate("/");
       showText("Successfully Logged In", "secondary")
+    }else{
+      showText("User dosen't exist", "danger")
     }
     console.log(json);
   };

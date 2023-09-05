@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import AlertContext from "../context/alert/AlertContext";
 
 const Login = () => {
@@ -64,6 +64,7 @@ const Login = () => {
           <button type="submit" className="btn btn-primary">
             Login
           </button>
+          <div className="my-3"><NavLink to={"/signup"}>Don't have an account yet? Sign Up then!</NavLink></div>
         </form>
       </div>
     </div>

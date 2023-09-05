@@ -18,8 +18,7 @@ const NoteState = (props) => {
       method: "GET", // *GET, POST, PUT, DELETE, etc.
       headers: {
         "Content-Type": "application/json",
-        "token":
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjRmMzE3Yzg4ZGM0YmIyYTM1ZDQ1ZDVkIn0sImlhdCI6MTY5MzY1Mjk3N30.B0aDzd9GN4NfoK2A4ughoMuVGlw7x2DWA0c0mx7grms",
+        "token":localStorage.getItem('token'),
         // 'Content-Type': 'application/x-www-form-urlencoded',
       },
     });
@@ -37,8 +36,7 @@ const NoteState = (props) => {
       method: "POST", // *GET, POST, PUT, DELETE, etc.
       headers: {
         "Content-Type": "application/json",
-        "token":
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjRmMzE3Yzg4ZGM0YmIyYTM1ZDQ1ZDVkIn0sImlhdCI6MTY5MzY1Mjk3N30.B0aDzd9GN4NfoK2A4ughoMuVGlw7x2DWA0c0mx7grms",
+        "token":localStorage.getItem('token')
         // 'Content-Type': 'application/x-www-form-urlencoded',
       },
       body: JSON.stringify({ title, body, tag }), // body data type must match "Content-Type" header
@@ -57,8 +55,7 @@ const NoteState = (props) => {
       method: "DELETE", // *GET, POST, PUT, DELETE, etc.
       headers: {
         "Content-Type": "application/json",
-        "token":
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjRmMzE3Yzg4ZGM0YmIyYTM1ZDQ1ZDVkIn0sImlhdCI6MTY5MzY1Mjk3N30.B0aDzd9GN4NfoK2A4ughoMuVGlw7x2DWA0c0mx7grms",
+        "token":localStorage.getItem('token')
         // 'Content-Type': 'application/x-www-form-urlencoded',
       }
     });
@@ -85,14 +82,14 @@ const NoteState = (props) => {
       method: "PATCH", // *GET, POST, PUT, DELETE, etc.
       headers: {
         "Content-Type": "application/json",
-        "token":
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjRmMzE3Yzg4ZGM0YmIyYTM1ZDQ1ZDVkIn0sImlhdCI6MTY5MzY1Mjk3N30.B0aDzd9GN4NfoK2A4ughoMuVGlw7x2DWA0c0mx7grms",
+        "token":localStorage.getItem('token')
         // 'Content-Type': 'application/x-www-form-urlencoded',
       },
       body: JSON.stringify({title, body, tag}), // body data type must match "Content-Type" header
     });
 
-    const json = response.json();
+    // const json = response.json();
+    // console.log(json);
 
     //LOGIC TO EDIT A NOTE
     for (let index = 0; index < notes.length; index++) {

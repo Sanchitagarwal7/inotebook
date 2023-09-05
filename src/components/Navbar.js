@@ -1,6 +1,6 @@
-import React, {useEffect} from "react";
-import { Link, NavLink } from 'react-router-dom';
-import { useLocation } from 'react-router-dom';
+import React/*, {useEffect} */ from "react";
+import { Link, NavLink, useNavigate } from 'react-router-dom';
+// import { useLocation } from 'react-router-dom';
 
 const Navbar = () => {
   // let location = useLocation();
@@ -9,6 +9,13 @@ const Navbar = () => {
   //   // Google Analytics
   //   console.log(location.pathname);
   // }, [location]);
+
+  let navigate = useNavigate();
+
+  const handleLogOut = ()=>{
+    localStorage.removeItem('token');
+    navigate("/login");
+  }
 
   return (
     <div>
@@ -39,14 +46,14 @@ const Navbar = () => {
                 </NavLink>
               </li>
             </ul>
-            <form className="d-flex" role="search">
+            {!localStorage.getItem('token')?<form className="d-flex" role="search">
               <NavLink className="btn btn-outline-success mx-3" type="submit" to={"/login"}>
                 Login
               </NavLink>
               <NavLink className="btn btn-outline-success" type="submit" to={"/signup"}>
                 Sign Up
               </NavLink>
-            </form>
+            </form>: <button className="btn btn-outline-success" type="submit" onClick={handleLogOut}>Log Out</button>}
           </div>
         </div>
       </nav>

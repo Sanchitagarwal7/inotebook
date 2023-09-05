@@ -35,7 +35,8 @@ const Login = () => {
 
   return (
     <div>
-      <div className="container">
+      <div className="container my-5">
+      <h1>Login to continue to iNoteBook</h1>
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
             <label className="form-label">Email address</label>
